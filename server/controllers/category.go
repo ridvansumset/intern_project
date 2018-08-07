@@ -3,8 +3,8 @@ package controllers
 import (
 	"net/http"
 
+	"github.com/KamillKAPLAN/intern_project/server/models"
 	"github.com/labstack/echo"
-	"github.com/ridvansumset/intern_project/server/models"
 )
 
 func GetMyCategory(c echo.Context) error {
