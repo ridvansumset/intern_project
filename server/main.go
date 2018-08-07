@@ -1,7 +1,7 @@
 package main
 
 import (
-	"controllers"
+	"github.com/ridvansumset/intern_project/server/controllers"
 
 	"github.com/labstack/echo"
 )

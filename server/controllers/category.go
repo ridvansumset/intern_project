@@ -3,11 +3,11 @@ package controllers
 import (
 	"net/http"
 
-	// "github.com/jokerkart/paladin/models"
 	"github.com/labstack/echo"
+	"github.com/ridvansumset/intern_project/server/models"
 )
 
-func GetCategory(c echo.Context) error {
+func GetMyCategory(c echo.Context) error {
 	id := c.Param("id")
 
 	category, err := models.GetMyCategory(id)
@@ -15,5 +15,5 @@ func GetCategory(c echo.Context) error {
 		return c.String(http.StatusNotFound, id)
 	}
 
-	return c.String(http.StatusOK, *category.Name)
+	return c.String(http.StatusOK, category.Name)
 }
