@@ -7,10 +7,10 @@ import (
 	"github.com/labstack/echo"
 )
 
-func GetMyCategory(c echo.Context) error {
+func GetCategory(c echo.Context) error {
 	id := c.Param("id")
 
-	category, err := models.GetMyCategory(id)
+	category, err := models.GetCategory(id)
 	if err != nil {
 		return c.String(http.StatusNotFound, id)
 	}

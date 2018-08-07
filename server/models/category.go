@@ -1,5 +1,7 @@
 package models
 
+import "errors"
+
 // Category structure
 type Category struct {
 	ID         string   `json:"id"`
@@ -11,14 +13,16 @@ type Category struct {
 	// DeletedAt      time.Time     `json:"-"`
 }
 
-// GetMyCategory gets a category
-func GetMyCategory(id string) (*Category, error) {
-	// for _, cat := range categorySlice {
-	// 	if id == cat.ID {
-	// 		return &cat, nil
-	// 	}
-	// }
+type Categories []Category
 
-	// return nil, errors.New("not found")
-	return nil, nil
+// GetCategory gets a category
+func GetCategory(id string) (*Category, error) {
+	for _, cat := range CategorySlice {
+		if id == cat.ID {
+			return &cat, nil
+		}
+	}
+
+	return nil, errors.New("not found")
+	// return nil, nil
 }
