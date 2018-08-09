@@ -8,12 +8,19 @@ import (
 )
 
 func GetCategory(c echo.Context) error {
-	id := c.Param("id")
+	id := c.Param("category_id")
 
 	category, err := models.GetCategory(id)
 	if err != nil {
-		return c.String(http.StatusNotFound, id)
+		return c.String(http.StatusNotFound, id+"bulunamadı.")
 	}
+	return c.JSON(http.StatusOK, category)
+}
 
-	return c.String(http.StatusOK, category.Name)
+func ListCategory(c echo.Context) error {
+	categories, err := models.ListCategory()
+	if err != nil {
+		return err
+	}
+	return c.JSON(http.StatusOK, categories)
 }

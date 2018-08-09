@@ -1,6 +1,8 @@
 package models
 
-import "errors"
+import (
+	"errors"
+)
 
 // Category structure
 type Category struct {
@@ -22,7 +24,9 @@ func GetCategory(id string) (*Category, error) {
 			return &cat, nil
 		}
 	}
-
 	return nil, errors.New("not found")
-	// return nil, nil
+}
+
+func ListCategory() (*Categories, error) {
+	return &CategorySlice, nil
 }
