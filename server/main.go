@@ -24,11 +24,11 @@ func main() {
 			AllowCredentials: true,
 		}))
 
-	router.GET("/categories", controllers.ListCategory)
+	router.GET("/categories", controllers.ListCategories)
 	router.GET("/categories/:category_id", controllers.GetCategory)
-	// router.POST("/category", controllers.PostCategory)
+	router.POST("/categories", controllers.CreateCategory)
+	// router.DELETE("/category/:id", controllers.DeleteCategory)
 	// router.PUT("/category/:id", controllersUpdateUser)
-	// router.DELETE("/category/:id", controllers.DeleteUser)
 
 	router.Logger.Fatal(router.Start(":1323"))
 }

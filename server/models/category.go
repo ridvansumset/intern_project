@@ -2,6 +2,7 @@ package models
 
 import (
 	"errors"
+	"strconv"
 )
 
 // Category structure
@@ -27,6 +28,26 @@ func GetCategory(id string) (*Category, error) {
 	return nil, errors.New("not found")
 }
 
-func ListCategory() (*Categories, error) {
+// ListCategory gets a category
+func ListCategories() (*Categories, error) {
 	return &CategorySlice, nil
 }
+
+// CreateCategory gets a category
+func (category *Category) Create() (*Category, error) {
+	category.ID = strconv.Itoa(len(CategorySlice) + 1)
+	CategorySlice = append(CategorySlice, *category)
+
+	return category, nil
+}
+
+// DeleteCategory gets a category
+// func (category *Category) Delete(id string) (*Category, error) {
+// 	for _, del := range CategorySlice {
+// 		if id == del.ID {
+// 			CategorySlice = delete(&Category, id)
+// 			return &del, nil
+// 		}
+// 	}
+// 	return category, nil
+// }
