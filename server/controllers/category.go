@@ -30,19 +30,19 @@ func CreateCategory(c echo.Context) error {
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
-	createdCategory, err := category.Create()
+	createdCategory, err := category.Create() // models'de metot
 	if err != nil {
 		return err
 	}
 	return c.JSON(http.StatusCreated, createdCategory)
 }
 
-//
-// func DeleteCategory(c echo.Context) {
-// 	id := c.Param("category_id")
-// 	category, err := models.Delete()
-// 	if err != nil {
-// 		return c.String(http.StatusNotFound, id+"bulunamadı.")
-// 	}
-// 	return c.JSON(http.StatusOK, category)
-// }
+func DeleteCategory(c echo.Context) error {
+	id := c.Param("category_id")
+	category, err := models.GetCategory(id)
+	if err != nil {
+		return c.String(http.StatusNotFound, id+"bulunamadı.")
+	}
+	category.Delete()
+	return c.NoContent(http.StatusNoContent)
+}

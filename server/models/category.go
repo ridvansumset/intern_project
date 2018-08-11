@@ -42,12 +42,12 @@ func (category *Category) Create() (*Category, error) {
 }
 
 // DeleteCategory gets a category
-// func (category *Category) Delete(id string) (*Category, error) {
-// 	for _, del := range CategorySlice {
-// 		if id == del.ID {
-// 			CategorySlice = delete(&Category, id)
-// 			return &del, nil
-// 		}
-// 	}
-// 	return category, nil
-// }
+func (category *Category) Delete() error {
+	for i, cat := range CategorySlice {
+		if category.ID == cat.ID {
+			CategorySlice = append(CategorySlice[:i], CategorySlice[i+1:]...)
+			return nil
+		}
+	}
+	return errors.New("Silinemedi")
+}

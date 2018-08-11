@@ -27,8 +27,8 @@ func main() {
 	router.GET("/categories", controllers.ListCategories)
 	router.GET("/categories/:category_id", controllers.GetCategory)
 	router.POST("/categories", controllers.CreateCategory)
-	// router.DELETE("/category/:id", controllers.DeleteCategory)
-	// router.PUT("/category/:id", controllersUpdateUser)
+	router.DELETE("/category/:category_id", controllers.DeleteCategory)
+	// router.PUT("/category/:category_id", controllersUpdateUser)
 
 	router.Logger.Fatal(router.Start(":1323"))
 }

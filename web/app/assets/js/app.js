@@ -28,24 +28,27 @@ app.controller('categoryController', ['$scope', 'categoryService', function($sco
   // console.log($scope.category);
   $scope.categories = categoryService.categoryResource.query();
 
-  var category_request_obj = {
-    name      : 'Tatlılar',
-    list_order: 5
+  $scope.new_category = {
+      name : '',
+      list_order: 5
+    }
+  $scope.addItem = function () {
+    $scope.errortext = "";
+    if ($scope.new_category.name != '') { // categories'nin içinde olup olmadığını kontrol ediyor,
+      new categoryService.categoryResource($scope.new_category).$save(function(createdCategory){
+        $scope.categories.push(createdCategory);
+      });
+      $scope.new_category.name = '';
+    } else {
+      $scope.errortext = "Boş bırakmayın a";
+    }
   }
-  $scope.new_category = new categoryService.categoryResource(category_request_obj).$save();
-  // $scope.addItem = function () {
-  //   $scope.errortext = "";
-  //   if (!$scope.new_category) {return;}
-  //   if ($scope.categories.indexOf($scope.new_category) == -1) {
-  //     $scope.categories.push($scope.new_category);
-  //   } else {
-  //     $scope.errortext = "The item is already in your shopping list.";
-  //   }
-  // }
+
+
   $scope.removeItem = function(i, c) {
-    // categoryService.category.delete({
-    //   categoryId: i.toString()
-    // });
+    categoryService.categoryResource.delete({
+      categoryId: c.id
+    });
     $scope.categories.splice(i, 1);
   }
 
