@@ -46,3 +46,13 @@ func DeleteCategory(c echo.Context) error {
 	category.Delete()
 	return c.NoContent(http.StatusNoContent)
 }
+
+func UpdateCategory(c echo.Context) error {
+	id := c.Param("category_id")
+	category, err := models.GetCategory(id)
+	if err != nil {
+		return c.String(http.StatusNotFound, id+"bulunamadı.")
+	}
+	category.Update()
+	return c.JSON(http.StatusOK, category[id])
+}

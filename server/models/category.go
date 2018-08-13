@@ -18,7 +18,7 @@ type Category struct {
 
 type Categories []Category
 
-// GetCategory gets a category
+// GetCategory
 func GetCategory(id string) (*Category, error) {
 	for _, cat := range CategorySlice {
 		if id == cat.ID {
@@ -28,20 +28,19 @@ func GetCategory(id string) (*Category, error) {
 	return nil, errors.New("not found")
 }
 
-// ListCategory gets a category
+// ListCategory
 func ListCategories() (*Categories, error) {
 	return &CategorySlice, nil
 }
 
-// CreateCategory gets a category
+// CreateCategory
 func (category *Category) Create() (*Category, error) {
 	category.ID = strconv.Itoa(len(CategorySlice) + 1)
 	CategorySlice = append(CategorySlice, *category)
-
 	return category, nil
 }
 
-// DeleteCategory gets a category
+// DeleteCategory
 func (category *Category) Delete() error {
 	for i, cat := range CategorySlice {
 		if category.ID == cat.ID {
@@ -51,3 +50,5 @@ func (category *Category) Delete() error {
 	}
 	return errors.New("Silinemedi")
 }
+
+// UpdateCategory
