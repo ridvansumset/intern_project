@@ -11,7 +11,7 @@ func GetCategory(c echo.Context) error {
 	id := c.Param("category_id")
 	category, err := models.GetCategory(id)
 	if err != nil {
-		return c.String(http.StatusNotFound, id+"bulunamadı.")
+		return echo.NewHTTPError(http.StatusNotFound, id+" bulunamadı.")
 	}
 	return c.JSON(http.StatusOK, category)
 }
@@ -49,10 +49,19 @@ func DeleteCategory(c echo.Context) error {
 
 func UpdateCategory(c echo.Context) error {
 	id := c.Param("category_id")
-	category, err := models.GetCategory(id)
-	if err != nil {
-		return c.String(http.StatusNotFound, id+"bulunamadı.")
+	category, getErr := models.GetCategory(id)
+	if getErr != nil {
+		return echo.NewHTTPError(http.StatusNotFound, getErr.Error())
 	}
-	category.Update()
-	return c.JSON(http.StatusOK, category[id])
+
+	err := c.Bind(&category)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+	}
+
+	_, updateErr := category.Update()
+	if updateErr != nil {
+		return updateErr
+	}
+	return c.JSON(http.StatusOK, nil)
 }

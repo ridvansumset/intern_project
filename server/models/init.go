@@ -7,6 +7,8 @@ import (
 	"os"
 )
 
+// type databaseQuery map[string]interface{}
+
 var CategorySlice Categories
 
 func Init() {
