@@ -63,5 +63,5 @@ func UpdateCategory(c echo.Context) error {
 	if updateErr != nil {
 		return updateErr
 	}
-	return c.JSON(http.StatusOK, nil)
+	return c.JSON(http.StatusOK, category)
 }

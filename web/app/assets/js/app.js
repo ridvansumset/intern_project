@@ -10,6 +10,9 @@ app.factory('categoryService', ['$resource', function($resource) {
       'query': {
         method: 'GET',
         isArray: true
+      },
+      'update': {
+        method: 'PUT'
       }
     }
   )
@@ -31,10 +34,10 @@ app.controller('categoryController', ['$scope', 'categoryService', function($sco
   $scope.new_category = {
       name : '',
       list_order: 5
-    }
+  }
   $scope.addItem = function () {
     $scope.errortext = "";
-    if ($scope.new_category.name != '') { // categories'nin içinde olup olmadığını kontrol ediyor,
+    if ($scope.new_category.name != '') {
       new categoryService.categoryResource($scope.new_category).$save(function(createdCategory){
         $scope.categories.push(createdCategory);
       });
@@ -50,6 +53,19 @@ app.controller('categoryController', ['$scope', 'categoryService', function($sco
       categoryId: c.id
     });
     $scope.categories.splice(i, 1);
+  }
+
+  $scope.update_category = {
+      name : 'KEBAP',
+      list_order: 6
+  }
+  $scope.updateItem = function(c) {
+    console.log(c);
+    new categoryService.categoryResource($scope.update_category).$update({
+      categoryId: c.id
+    },function(updateCategory){
+        window.location.reload();
+    });
   }
 
   // $scope.categories = [];

@@ -13,8 +13,8 @@
       </header>
       <ul class="w3-ul">
         <li ng-repeat="(index, category) in categories  track by $index" class="w3-padding-16">
-          {{category.name}}
-          <button type="button" class="btn btn-primary" style="float: right">Update</button>
+          {{index}} {{category.name}}
+          <button type="button" ng-click="updateItem(category)" class="btn btn-primary" style="float: right">Update</button>
           <span ng-click="removeItem(index, category)" style="cursor:pointer;" class="w3-right w3-margin-right">×</span>
         </li>
       </ul>
@@ -32,6 +32,7 @@
     </div>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-resource.js"></script>
+   <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script> -->
    <script src="assets/js/app.js"></script>
   </body>
 </html>

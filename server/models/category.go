@@ -58,12 +58,9 @@ func (category *Category) Delete() error {
 func (category *Category) Update() (*Category, error) {
 	for i, cat := range CategorySlice {
 		if category.ID == cat.ID {
-			slicePart1 := CategorySlice[:i]
-			slicePart2 := CategorySlice[i+1:]
 
-			CategorySlice = append(slicePart1, slicePart2...)
-			CategorySlice = append(slicePart1, *category)
-			CategorySlice = append(CategorySlice, slicePart2...)
+			CategorySlice = append(CategorySlice[:i], append([]Category{*category}, CategorySlice[i+1:]...)...)
+
 			return category, nil
 		}
 	}
