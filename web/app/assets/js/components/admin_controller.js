@@ -1,4 +1,4 @@
-app.controller('categoryController', ['$scope', 'categoryService', function($scope, categoryService) {
+app.controller('adminController', ['$scope', 'categoryService', '$modal', function($scope, categoryService, $modal) {
 
   // $scope.category = categoryService.category.get({
   //   categoryId: '1'
@@ -31,20 +31,30 @@ app.controller('categoryController', ['$scope', 'categoryService', function($sco
     $scope.categories.splice(i, 1);
   }
 
-  $scope.update_category = {
-      name : 'KEBAP',
-      list_order: 6
+  $scope.update_category = {};
+  $scope.showCategoryModal = function(category) {
+    $scope.update_category = category;
+    $scope.showModal();
   }
 
-  // $scope.update_category = {};
-  $scope.updateItem = function(c) {
-    // $scope.update_category = c;
+  $scope.updateCategory = function(c) {
     new categoryService.categoryResource($scope.update_category).$update({
       categoryId: c.id
-    },function(updateCategory){
-        window.location.reload();
+    },function(updatedCategory){
+      c = updatedCategory;
+      myOtherModal.hide();
+        // window.location.reload();
     });
   }
+  var myOtherModal = $modal({
+    scope: $scope,
+    placement: 'center',
+    templateUrl: 'assets/tpl/modals/category-modal.html',
+    show: false
+  });
+  $scope.showModal = function() {
+    myOtherModal.$promise.then(myOtherModal.show);
+  };
 
   // $scope.categories = [];
   // $http({
@@ -56,4 +66,4 @@ app.controller('categoryController', ['$scope', 'categoryService', function($sco
   // }, function myError(err) {
   //     $scope.error = err.statusText;
   //   });
-}]);
+}])
