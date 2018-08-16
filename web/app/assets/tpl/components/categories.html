@@ -1,8 +1,47 @@
-<sectio ng-controller="categoryController">
-  <ul class="w3-ul">
-    <li ng-repeat="(index, category) in categories  track by $index" class="w3-padding-16">
-      <a href="categories/{{category.id}}">{{category.id}} - {{category.name}}</a>
+<div class="container" ng-controller="categoryController">
+  <br>
+  <h1>Categories</h1>
+  <hr>
+  <div class="row">
+    <div class="col-sm-3">
 
-    </li>
-  </ul>
-</section>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label class="control-label">Listele:</label>
+          <div class="">
+            <input class="form-control" type="text" ng-model="searchCategory.name" autofocus>
+          </div>
+        </div>
+        <p class="alert alert-danger">{{convert}}</p>
+      </form>
+
+    </div>
+    <div class="col-sm-9">
+      <!-- <section ng-controller="categoryController">
+        <ul class="w3-ul">
+          <li ng-repeat="(index, category) in categories  track by $index" class="w3-padding-16">
+            <a href="categories/{{category.id}}">{{category.id}} - {{category.name}}</a>
+          </li>
+        </ul>
+      </section> -->
+      <table class="table">
+        <thead style="text-align: center">
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>ListOrder</th>
+            <th>ProductIDs</th>
+          </tr>
+        </thead>
+        <tbody style="text-align: center; ">
+          <tr ng-repeat="category in categories | filter:searchCategory:strict | orderBy:'id'">
+            <td>{{category.id}}</td>
+            <td><a href="categories/{{category.id}}">{{category.name}}</a></td>
+            <td>{{category.list_order}}</td>
+            <td>{{category.product_ids}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

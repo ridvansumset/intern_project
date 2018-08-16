@@ -7,7 +7,7 @@ app
     .when("/categories/:categoryId", {
         templateUrl : "assets/tpl/components/products.html"
     })
-    .when("/products/:product_id", {
+    .when("/categories/:categoryId/products/:product_id", {
         templateUrl : "assets/tpl/components/options.html"
     })
     .when("/admin", {

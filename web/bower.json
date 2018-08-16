@@ -1,0 +1,29 @@
+{
+  "name": "menu",
+  "description": "intern project",
+  "main": "app/app.js",
+  "authors": [
+    "kamil kaplan"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/KamillKAPLAN/intern_project",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#1.7.2",
+    "angular-route": "^1.7.3",
+    "angular-animate": "^1.7.3",
+    "angular-resource": "^1.7.3",
+    "angular-strap": "^2.3.12",
+    "bootstrap": "3.3.x",
+    "jquery": "2.2.x",
+    "angular-bootstrap": "^2.5.0"
+  }
+}
