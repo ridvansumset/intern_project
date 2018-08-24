@@ -21,6 +21,11 @@ type Category struct {
 
 type Categories []Category
 
+// ListCategory
+func ListCategories() (*Categories, error) {
+	return &CategorySlice, nil
+}
+
 // GetCategory
 func GetCategory(id string) (*Category, error) {
 	for _, cat := range CategorySlice {
@@ -29,11 +34,6 @@ func GetCategory(id string) (*Category, error) {
 		}
 	}
 	return nil, errors.New("not found")
-}
-
-// ListCategory
-func ListCategories() (*Categories, error) {
-	return &CategorySlice, nil
 }
 
 // CreateCategory

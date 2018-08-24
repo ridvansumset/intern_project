@@ -2,21 +2,25 @@
   {
     "id"         : "1",
     "name"       : "Pizza",
-    "list_order" : 4
+    "list_order" : 4,
+    "product_ids": ["11"]
   },
   {
     "id"         : "2",
     "name"       : "Köfte",
-    "list_order" : 1
+    "list_order" : 1,
+    "product_ids": ["22"]
   },
   {
     "id"         : "3",
     "name"       : "Pide",
-    "list_order" : 3
+    "list_order" : 3,
+    "product_ids": ["33"]
   },
   {
     "id"         : "4",
     "name"       : "Döner",
-    "list_order" : 2
+    "list_order" : 2,
+    "product_ids": ["44"]
   }
 ]

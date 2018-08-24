@@ -1,0 +1,30 @@
+[
+  {
+    "id"          : "11",
+    "name"        : "Pizza Product",
+    "list_order"  : 4,
+    "option_ids" : [],
+    "category_id": "1"
+  },
+  {
+    "id"         : "22",
+    "name"       : "Köfte Product",
+    "list_order" : 1,
+    "option_ids" : [],
+    "category_id": "2"
+  },
+  {
+    "id"         : "33",
+    "name"       : "Pide Product",
+    "list_order" : 3,
+    "option_ids" : [],
+    "category_id": "3"
+  },
+  {
+    "id"         : "44",
+    "name"       : "Döner Product",
+    "list_order" : 2,
+    "option_ids" : [],
+    "category_id": "4"
+  }
+]

@@ -7,6 +7,14 @@ import (
 	"github.com/labstack/echo"
 )
 
+func ListCategories(c echo.Context) error {
+	categories, err := models.ListCategories()
+	if err != nil {
+		return err
+	}
+	return c.JSON(http.StatusOK, categories)
+}
+
 func GetCategory(c echo.Context) error {
 	id := c.Param("category_id")
 	category, err := models.GetCategory(id)
@@ -14,14 +22,6 @@ func GetCategory(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusNotFound, id+" bulunamadı.")
 	}
 	return c.JSON(http.StatusOK, category)
-}
-
-func ListCategories(c echo.Context) error {
-	categories, err := models.ListCategories()
-	if err != nil {
-		return err
-	}
-	return c.JSON(http.StatusOK, categories)
 }
 
 func CreateCategory(c echo.Context) error {
@@ -53,7 +53,6 @@ func UpdateCategory(c echo.Context) error {
 	if getErr != nil {
 		return echo.NewHTTPError(http.StatusNotFound, getErr.Error())
 	}
-
 	err := c.Bind(&category)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())

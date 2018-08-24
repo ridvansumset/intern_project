@@ -30,5 +30,11 @@ func main() {
 	router.DELETE("/categories/:category_id", controllers.DeleteCategory)
 	router.PUT("/categories/:category_id", controllers.UpdateCategory)
 
+	// router.GET("/categories/:category_id/products", controllers.ListProducts)
+	// router.GET("/categories/:category_id/products/:product_id", controllers.GetProduct)
+	// router.POST("/categories/:category_id/products", controllers.CreateProduct)
+	// router.DELETE("/categories/:category_id/products/:product_id", controllers.DeleteProduct)
+	// router.PUT("/categories/:category_id/products/:product_id", controllers.UpdateProduct)
+
 	router.Logger.Fatal(router.Start(":1323"))
 }
