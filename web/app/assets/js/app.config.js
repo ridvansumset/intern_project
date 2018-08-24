@@ -2,16 +2,20 @@ app
 .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : "assets/tpl/components/categories.html"
+        templateUrl : "assets/tpl/components/categories.html",
+        // controller: 'categoryController'
     })
     .when("/categories/:categoryId", {
-        templateUrl : "assets/tpl/components/products.html"
+        templateUrl : "assets/tpl/components/products.html",
+        // controller: 'productController'
     })
     .when("/categories/:categoryId/products", {
-        templateUrl : "assets/tpl/components/options.html"
+        templateUrl : "assets/tpl/components/options.html",
+        // controller: 'optionController'
     })
     .when("/admin", {
-        templateUrl : "assets/tpl/components/admin.html"
+        templateUrl : "assets/tpl/components/admin.html",
+        // controller: 'adminController'
     })
     .otherwise({
 			redirectTo: '/'
