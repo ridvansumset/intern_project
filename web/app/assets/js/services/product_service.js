@@ -8,9 +8,6 @@ app.factory('productService', ['$resource', function($resource) {
       'query': {
         method: 'GET',
         isArray: true
-      },
-      'update': {
-        method: 'PUT'
       }
     }
   )
@@ -18,4 +15,5 @@ app.factory('productService', ['$resource', function($resource) {
   return {
     productResource: productResource
   }
-}])
+
+}]);
