@@ -1,5 +1,4 @@
-app
-.factory('categoryService', ['$resource', function($resource) {
+app.factory('categoryService', ['$resource', function($resource) {
   var categoryResource = $resource(
     'http://localhost:1323/categories/:categoryId',
     {
@@ -20,8 +19,4 @@ app
     categoryResource: categoryResource
   }
 
-}])
-
-.factory('productService', ['$resource', function($resource) {
-
-}])
+}]);

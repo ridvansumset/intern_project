@@ -40,7 +40,7 @@ func CreateProduct(c echo.Context) error {
 		return err
 	}
 	category, err := models.GetCategory(categoryID)
-	// category.ProductIDs = append(models.ProductSlice, product.ID)
+	category.ProductIDs = append(category.ProductIDs, product.ID)
 	if err != nil {
 		return err
 	}
