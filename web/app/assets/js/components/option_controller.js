@@ -47,16 +47,22 @@ function($scope, $localStorage, optionService, choiceService, $routeParams) {
           let isIncluded = false
           $scope.selected_options.forEach(function(selected_option){
             if (selected_option.id == option.id) {
-              let isIncluded = true
+              isIncluded = true
             }
           })
           if (!isIncluded) {
-            $scope.selected_options.push(selected_choice);
+            $scope.selected_options.push(option);
             // push yap
           }
         }
-      })
-    })
+      });
+    });
+
+    $scope.selected_product = []
+    $scope.selected_product.push($scope.product,$scope.selected_options,$scope.selected_choices)
+    console.log("Product",$scope.selected_product);
+    console.log("Choice" , $scope.selected_choices);
+    console.log("Option" ,$scope.selected_options);
     $scope.close();
   }
 

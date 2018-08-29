@@ -22,6 +22,10 @@ function($scope, $localStorage, productService, categoryService, $routeParams,$m
     $scope.optionModal.$promise.then($scope.optionModal.show);
   };
 
+  $scope.close = function() {
+    $scope.optionModal.hide();
+  }
+
   //  Cart Start Code
   // prod = {
   //   name:'asd',
@@ -32,7 +36,4 @@ function($scope, $localStorage, productService, categoryService, $routeParams,$m
   //   }]
   // }
 
-  $scope.close = function() {
-    $scope.optionModal.hide();
-  }
 }]);
