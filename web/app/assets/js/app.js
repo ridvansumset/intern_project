@@ -3,5 +3,6 @@ var app = angular.module('myApp', [
   'ngResource',
   'ngAnimate',
   'ui.bootstrap',
-  'mgcrea.ngStrap'
+  'mgcrea.ngStrap',
+  'ngStorage'
 ]);

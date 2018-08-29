@@ -1,5 +1,5 @@
-app.controller('optionController', ['$scope', 'optionService', 'choiceService', '$routeParams',
-function($scope, optionService, choiceService, $routeParams) {
+app.controller('optionController', ['$scope', '$localStorage', 'optionService', 'choiceService', '$routeParams',
+function($scope, $localStorage, optionService, choiceService, $routeParams) {
   $scope.options = [];
   optionService.optionResource.query({
     categoryId: $routeParams.categoryId,
@@ -19,26 +19,47 @@ function($scope, optionService, choiceService, $routeParams) {
       });
     });
   });
-
   // Cart Start Code
-  // $scope.selected_options = [];
-  $scope.selected_choices = [];
-  var add = 0;
 
-  $scope.addChoiceToArray = function (choice) {
-    $scope.selected_choices.push(choice.price);
-    for (var i = 0; i < $scope.selected_choices.length; i++) {
-      add += $scope.selected_choices[i];
-      $scope.totalAmount = add;
-    }
-    console.log($scope.selected_choices);
+  $scope.totalPrice = $scope.product.price;
+  $scope.selected_choices = [];
+
+  $scope.addChoiceToArray = function(choice) {
+    $scope.selected_choices.push(choice);
+    $scope.totalPrice += choice.price;
   }
-  $scope.removeChoiceToArray = function (i,c) {
-    $scope.selected_choices.splice(i, 1);
+
+  $scope.removeChoiceFromArray = function(choice) {
     for (var i = 0; i < $scope.selected_choices.length; i++) {
-      add -= $scope.selected_choices[i];
-      $scope.totalAmount = add;
+      if ($scope.selected_choices[i].id == choice.id) {
+        $scope.selected_choices.splice(i, 1);
+        $scope.totalPrice -= choice.price;
+      }
     }
-    console.log($scope.selected_choices);
   }
+
+  $scope.complete = function() {
+    $scope.selected_options = [];
+    $localStorage.cart.totalAmount += $scope.totalPrice;
+    $scope.selected_choices.forEach(function(selected_choice) {
+      $scope.options.forEach(function(option) {
+        if (selected_choice.option_id == option.id) {
+          let isIncluded = false
+          $scope.selected_options.forEach(function(selected_option){
+            if (selected_option.id == option.id) {
+              let isIncluded = true
+            }
+          })
+          if (!isIncluded) {
+            $scope.selected_options.push(selected_choice);
+            // push yap
+          }
+        }
+      })
+    })
+    $scope.close();
+  }
+
+// cart_product = scoep.pr
+
 }]);

@@ -22,12 +22,20 @@
     <div class="form-group w3-container w3-card-4">
       <br>
       <b> <label for="sel1">{{category.name}}</label> </b>
+      <b> <label for="sel1" style="float:right">Toplam : {{localStorage.cart.totalAmount}}</label> </b>
       <div class="w3-container w3-card-4">
-        <span ng-repeat="product in products" ng-click="showProductModal(product)" >
-          <br>
-            {{product.name}}
-          <br>
-        </span>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="product in products | orderBy:'list_order'" ng-click="showProductModal(product)">
+              <td><a>{{product.name}}</a></td>
+            </tr>
+          </tbody>
+        </table>
         <br>
       </div>
       <br>

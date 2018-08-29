@@ -1,5 +1,5 @@
-app.controller('productController', ['$scope', 'productService', 'categoryService', '$routeParams', '$modal',
-function($scope, productService, categoryService, $routeParams,$modal) {
+app.controller('productController', ['$scope', '$localStorage', 'productService', 'categoryService', '$routeParams', '$modal',
+function($scope, $localStorage, productService, categoryService, $routeParams,$modal) {
   $scope.products = productService.productResource.query({
     categoryId: $routeParams.categoryId
   });
@@ -12,24 +12,17 @@ function($scope, productService, categoryService, $routeParams,$modal) {
     $scope.product = product;
     $scope.showModal();
   }
-  var optionModal = $modal({
+  $scope.optionModal = $modal({
     scope: $scope,
     placement: 'center',
     templateUrl: 'assets/tpl/modals/option-modal.html',
     show: false
   });
   $scope.showModal = function() {
-    optionModal.$promise.then(optionModal.show);
+    $scope.optionModal.$promise.then($scope.optionModal.show);
   };
-  
+
   //  Cart Start Code
-  $scope.cart = {
-    products: [],
-    totalAmountMethod: function() {
-      optionModal.hide();
-    },
-    totalAmount: 0
-  }
   // prod = {
   //   name:'asd',
   //   price: 5
@@ -38,4 +31,8 @@ function($scope, productService, categoryService, $routeParams,$modal) {
   //     choices: [{}, {}]
   //   }]
   // }
+
+  $scope.close = function() {
+    $scope.optionModal.hide();
+  }
 }]);

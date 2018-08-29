@@ -1,4 +1,4 @@
-app.controller('categoryController', ['$scope', 'categoryService', function($scope,categoryService) {
+app.controller('categoryController', ['$scope', '$localStorage', 'categoryService', function($scope, $localStorage, categoryService) {
   $scope.categories = categoryService.categoryResource.query();
 
   var categoiess = $scope.categories;
