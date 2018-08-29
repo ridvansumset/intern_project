@@ -19,36 +19,37 @@ var ChoiceSlice Choices
 
 func Init() {
 	os.Chdir("server")
-	// categories.json
-	jsonFile, err := os.Open("categories.json")
+
+	categoryFile, err := os.Open("categories.json")
 	if err != nil {
 		fmt.Println(err)
 	}
-	defer jsonFile.Close()
-	byteValue, _ := ioutil.ReadAll(jsonFile)
+	defer categoryFile.Close()
+	byteValue, _ := ioutil.ReadAll(categoryFile)
 	json.Unmarshal(byteValue, &CategorySlice)
-	// products.json
-	jsonFile2, err2 := os.Open("products.json")
+
+	productFile, err2 := os.Open("products.json")
 	if err2 != nil {
 		fmt.Println(err2)
 	}
-	defer jsonFile2.Close()
-	byteValue2, _ := ioutil.ReadAll(jsonFile2)
+	defer productFile.Close()
+	byteValue2, _ := ioutil.ReadAll(productFile)
 	json.Unmarshal(byteValue2, &ProductSlice)
-	// option.json
-	jsonFile3, err3 := os.Open("option.json")
+
+	optionFile, err3 := os.Open("options.json")
 	if err3 != nil {
 		fmt.Println(err3)
 	}
-	defer jsonFile3.Close()
-	byteValue3, _ := ioutil.ReadAll(jsonFile3)
+	defer optionFile.Close()
+	byteValue3, _ := ioutil.ReadAll(optionFile)
 	json.Unmarshal(byteValue3, &OptionSlice)
-	// choice.json
-	jsonFile4, err4 := os.Open("choice.json")
+
+	choiceFile, err4 := os.Open("choices.json")
 	if err4 != nil {
 		fmt.Println(err4)
 	}
-	defer jsonFile4.Close()
-	byteValue4, _ := ioutil.ReadAll(jsonFile4)
+	defer choiceFile.Close()
+	byteValue4, _ := ioutil.ReadAll(choiceFile)
 	json.Unmarshal(byteValue4, &ChoiceSlice)
+	fmt.Println(ChoiceSlice)
 }

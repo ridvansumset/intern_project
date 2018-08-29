@@ -13,8 +13,9 @@ type Product struct {
 	ID         string   `json:"id"`
 	Name       string   `json:"name"`
 	ListOrder  int64    `json:"list_order"`
-	OptionsIDs []string `json:"product_ids"`
+	OptionIDs  []string `json:"option_ids"`
 	CategoryID string   `json:"category_id"`
+	Price      float64  `json:"price"`
 	// CreatedAt      time.Time     `json:"-"`
 	// UpdatedAt      time.Time     `json:"-"`
 	// DeletedAt      time.Time     `json:"-"`

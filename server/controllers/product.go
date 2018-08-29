@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"errors"
 	"net/http"
 
 	"github.com/KamillKAPLAN/intern_project/server/models"
@@ -11,14 +12,14 @@ func ListProducts(c echo.Context) error {
 	categoryID := c.Param("category_id")
 	products, err := models.ListProducts(categoryID)
 	if err != nil {
-		return err
+		return errors.New("Ürün bulunamadı")
 	}
 	return c.JSON(http.StatusOK, products)
 }
 
 func GetProduct(c echo.Context) error {
-	productID := c.Param("product_id")
 	categoryID := c.Param("category_id")
+	productID := c.Param("product_id")
 	product, err := models.GetProduct(productID, categoryID)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusNotFound, productID+" bulunamadı.")

@@ -30,11 +30,23 @@ func main() {
 	router.DELETE("/categories/:category_id", controllers.DeleteCategory)
 	router.PUT("/categories/:category_id", controllers.UpdateCategory)
 
-	// router.GET("/categories/:category_id/products", controllers.ListProducts)
-	// router.GET("/categories/:category_id/products/:product_id", controllers.GetProduct)
-	// router.POST("/categories/:category_id/products", controllers.CreateProduct)
+	router.GET("/categories/:category_id/products", controllers.ListProducts)
+	router.GET("/categories/:category_id/products/:product_id", controllers.GetProduct)
+	router.POST("/categories/:category_id/products", controllers.CreateProduct)
 	// router.DELETE("/categories/:category_id/products/:product_id", controllers.DeleteProduct)
 	// router.PUT("/categories/:category_id/products/:product_id", controllers.UpdateProduct)
+
+	router.GET("/categories/:category_id/products/:product_id/options", controllers.ListOptions)
+	router.GET("/categories/:category_id/products/:product_id/options/:option_id", controllers.GetOption)
+	// router.POST("/categories/:category_id/products", controllers.CreateOption)
+	// router.DELETE("/categories/:category_id/products/:product_id", controllers.DeleteOption)
+	// router.PUT("/categories/:category_id/products/:product_id", controllers.UpdateOption)
+
+	router.GET("/categories/:category_id/products/:product_id/options/:option_id/choices", controllers.ListChoices)
+	router.GET("/categories/:category_id/products/:product_id/options/:option_id/choices/:choice_id", controllers.GetChoice)
+	// router.POST("/categories/:category_id/products", controllers.CreateOption)
+	// router.DELETE("/categories/:category_id/products/:product_id", controllers.DeleteOption)
+	// router.PUT("/categories/:category_id/products/:product_id", controllers.UpdateOption)
 
 	router.Logger.Fatal(router.Start(":1323"))
 }

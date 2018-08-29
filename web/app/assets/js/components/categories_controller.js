@@ -7,7 +7,7 @@ app.controller('categoryController', ['$scope', 'categoryService', function($sco
   $scope.$watch("searchCategory.name", function(newValue, oldValue) {
     if ( newValue !== oldValue) {
       $scope.convert = "";
-      var degis = $scope.searchCategory.name
+      var degis = $scope.searchCategory.name;
       for (var i = 0; i < categoiess.length; i++) {
         if (categoiess[i].name.toLowerCase().includes(degis.toLowerCase())) {
           $scope.convert = "var";
