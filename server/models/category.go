@@ -1,41 +1,68 @@
 package models
 
-import "errors"
+import (
+	"errors"
+	"net/http"
+	"strconv"
+
+	"github.com/labstack/echo"
+)
 
 // Category structure
 type Category struct {
-	ID             string `json:"-"`
-	OrganizationID string `json:"organization_id"`
-	Name           string `json:"name,omitempty"`
-	ListOrder      int64  `json:"list_order,omitempty"`
+	ID         string   `json:"id"`
+	Name       string   `json:"name"`
+	ListOrder  int64    `json:"list_order"`
+	ProductIDs []string `json:"product_ids"`
 	// CreatedAt      time.Time     `json:"-"`
 	// UpdatedAt      time.Time     `json:"-"`
 	// DeletedAt      time.Time     `json:"-"`
 }
 
-// Categories array representation of Category
 type Categories []Category
 
-var categorySlice = Categories{}
-
-func init() {
-
-	var newCategory = Category{
-		ID:             "1",
-		OrganizationID: "23",
-		Name:           "Kahvaltı",
-		ListOrder:      5,
-	}
-	categorySlice = append(categorySlice, newCategory)
+// ListCategory
+func ListCategories() (*Categories, error) {
+	return &CategorySlice, nil
 }
 
-// GetMyCategory gets a category
-func GetMyCategory(id string) (*Category, error) {
-	for _, cat := range categorySlice {
+// GetCategory
+func GetCategory(id string) (*Category, error) {
+	for _, cat := range CategorySlice {
 		if id == cat.ID {
 			return &cat, nil
 		}
 	}
-
 	return nil, errors.New("not found")
+}
+
+// CreateCategory
+func (category *Category) Create() (*Category, error) {
+	category.ID = strconv.Itoa(len(CategorySlice) + 1)
+	CategorySlice = append(CategorySlice, *category)
+	return category, nil
+}
+
+// DeleteCategory
+func (category *Category) Delete() error {
+	for i, cat := range CategorySlice {
+		if category.ID == cat.ID {
+			CategorySlice = append(CategorySlice[:i], CategorySlice[i+1:]...)
+			return nil
+		}
+	}
+	return errors.New("Silinemedi")
+}
+
+// UpdateCategory
+func (category *Category) Update() (*Category, error) {
+	for i, cat := range CategorySlice {
+		if category.ID == cat.ID {
+
+			CategorySlice = append(CategorySlice[:i], append([]Category{*category}, CategorySlice[i+1:]...)...)
+
+			return category, nil
+		}
+	}
+	return nil, echo.NewHTTPError(http.StatusBadRequest)
 }
