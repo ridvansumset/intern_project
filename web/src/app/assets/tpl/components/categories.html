@@ -1,7 +1,8 @@
 <div class="container" ng-controller="categoryController">
   <br>
   <h1>Categories</h1>
-  <!-- <button ng-click="init()">Init</button> -->
+  <button ng-show="!localStorage.loggedIn" ng-click="pretendLogin()">(pretend) Login</button>
+  <button ng-show="localStorage.loggedIn" ng-click="pretendLogout()">(pretend) Logout</button>
   <hr>
   <div class="row">
     <div class="col-sm-3">
@@ -13,7 +14,7 @@
             <input class="form-control" type="text" ng-model="searchCategory.name" autofocus>
           </div>
         </div>
-        <p class="alert alert-danger">{{convert}}</p>
+        <!-- <p class="alert alert-danger">{{convert}}</p> -->
       </form>
 
     </div>

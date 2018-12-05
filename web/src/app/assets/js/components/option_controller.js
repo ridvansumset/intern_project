@@ -58,14 +58,7 @@ function($scope, $localStorage, optionService, choiceService, $routeParams) {
       });
     });
 
-    $scope.selected_product = []
-    $scope.selected_product.push($scope.product,$scope.selected_options,$scope.selected_choices)
-    console.log("Product",$scope.selected_product);
-    console.log("Choice" , $scope.selected_choices);
-    console.log("Option" ,$scope.selected_options);
+    $localStorage.cart.products.push($scope.product);
     $scope.close();
   }
-
-// cart_product = scoep.pr
-
 }]);
