@@ -1,20 +1,20 @@
 {
   "name": "menu",
   "version": "1.0.0",
-  "description": "intern project",
+  "description": "restaurant menu app",
   "main": "app/app.js",
   "scripts": {
     "test": "test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KamillKAPLAN/intern_project.git"
+    "url": "git+https://github.com/ridvansumset/restaurant-menu-app.git"
   },
-  "author": "kamil kaplan",
+  "author": "rıdvan şümşet",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/KamillKAPLAN/intern_project/issues"
+    "url": "https://github.com/ridvansumset/restaurant-menu-app/issues"
   },
-  "homepage": "https://github.com/KamillKAPLAN/intern_project#readme",
+  "homepage": "https://github.com/ridvansumset/restaurant-menu-app#readme",
   "dependencies": {}
 }

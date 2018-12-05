@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/KamillKAPLAN/intern_project/server/controllers"
+	"github.com/ridvansumset/restaurant-menu-app/server/controllers"
 
 	"github.com/labstack/echo"
 	echomiddleware "github.com/labstack/echo/middleware"

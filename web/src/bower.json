@@ -1,12 +1,13 @@
 {
   "name": "menu",
-  "description": "intern project",
+  "description": "restaurant menu app",
   "main": "app/app.js",
   "authors": [
+    "rıdvan şümşet",
     "kamil kaplan"
   ],
   "license": "ISC",
-  "homepage": "https://github.com/KamillKAPLAN/intern_project",
+  "homepage": "https://github.com/ridvansumset/restaurant-menu-app",
   "private": true,
   "ignore": [
     "**/.*",

@@ -4,7 +4,8 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/KamillKAPLAN/intern_project/server/models"
+	"github.com/ridvansumset/restaurant-menu-app/server/models"
+
 	"github.com/labstack/echo"
 )
 

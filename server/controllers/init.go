@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"github.com/KamillKAPLAN/intern_project/server/models"
+	"github.com/ridvansumset/restaurant-menu-app/server/models"
 )
 
 func Init() {
